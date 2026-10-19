@@ -959,3 +959,8 @@ button.thumb img { display: block; }
   .brand-mark-wrap,.brand-mark-wrap::after{animation:none}
   .sub-typed{animation:none;border-right-color:transparent}
 }
+
+/* Blog post visuals (2026-10-19) */
+.prose figure{margin:34px 0}
+.prose figure img{width:100%;height:auto;display:block;border-radius:18px;border:1px solid rgba(255,255,255,.08)}
+.prose figcaption{margin-top:12px;font-size:13.5px;line-height:1.55;color:#9aa79d;text-align:center}
