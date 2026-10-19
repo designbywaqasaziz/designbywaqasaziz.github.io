@@ -74,13 +74,22 @@
     if (!grids.length) return;
     grids.forEach(function (grid) {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    Array.prototype.slice.call(grid.children).forEach(function (card) {
-      var clone = card.cloneNode(true);
-      clone.classList.add('is-clone');
-      clone.setAttribute('aria-hidden', 'true');
-      clone.querySelectorAll('a').forEach(function (a) { a.setAttribute('tabindex', '-1'); });
-      grid.appendChild(clone);
+    var originals = Array.prototype.slice.call(grid.children);
+    var setW = 0;
+    originals.forEach(function (card) {
+      setW += card.getBoundingClientRect().width + parseFloat(getComputedStyle(card).marginRight || 0);
     });
+    var copiesPerGroup = Math.max(1, Math.ceil(document.documentElement.clientWidth / Math.max(setW, 1)));
+    var totalSets = copiesPerGroup * 2;
+    for (var s = 1; s < totalSets; s++) {
+      originals.forEach(function (card) {
+        var clone = card.cloneNode(true);
+        clone.classList.add('is-clone');
+        clone.setAttribute('aria-hidden', 'true');
+        clone.querySelectorAll('a').forEach(function (a) { a.setAttribute('tabindex', '-1'); });
+        grid.appendChild(clone);
+      });
+    }
     if (grid.id) document.querySelectorAll('[data-filter-target="#' + grid.id + '"] .pill').forEach(function (pill) {
       pill.addEventListener('click', function () {
         grid.classList.toggle('is-filtered', pill.getAttribute('data-filter') !== 'all');
