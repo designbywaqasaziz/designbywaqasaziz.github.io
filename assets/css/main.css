@@ -965,7 +965,7 @@ button.thumb img { display: block; }
 .prose figure img{width:100%;height:auto;display:block;border-radius:18px;border:1px solid rgba(255,255,255,.08)}
 .prose figcaption{margin-top:12px;font-size:13.5px;line-height:1.55;color:#9aa79d;text-align:center}
 
-/* Case studies marquee: left to right (2026-10-19) */
+/* Case studies marquee: right to left (2026-10-19) */
 .case-marquee{overflow:hidden;padding:14px 0 30px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 3.5%,#000 96.5%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3.5%,#000 96.5%,transparent)}
 .case-track{display:flex;flex-wrap:nowrap;width:max-content;gap:0;animation:caseMove 62s linear infinite}
 .case-track .work-card{flex:0 0 min(380px,78vw);margin-right:clamp(1.25rem,2.5vw,2rem)}
@@ -973,5 +973,5 @@ button.thumb img { display: block; }
 .case-track.is-filtered{animation:none;transform:none;flex-wrap:wrap;width:auto;max-width:1240px;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem)}
 .case-track.is-filtered .work-card{flex:1 1 320px;margin-bottom:clamp(1.25rem,2.5vw,2rem)}
 .case-track.is-filtered .is-clone{display:none}
-@keyframes caseMove{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@keyframes caseMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion: reduce){.case-track{animation:none;flex-wrap:wrap;width:auto}.case-track .work-card{flex:1 1 320px;margin-bottom:clamp(1.25rem,2.5vw,2rem)}}
