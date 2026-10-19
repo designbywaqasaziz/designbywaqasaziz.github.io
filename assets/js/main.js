@@ -70,8 +70,9 @@
 
   /* ---------- Case studies marquee: left to right ---------- */
   (function () {
-    var grid = document.getElementById('workGrid');
-    if (!grid) return;
+    var grids = document.querySelectorAll('#workGrid, [data-case-marquee]');
+    if (!grids.length) return;
+    grids.forEach(function (grid) {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     Array.prototype.slice.call(grid.children).forEach(function (card) {
       var clone = card.cloneNode(true);
@@ -80,10 +81,11 @@
       clone.querySelectorAll('a').forEach(function (a) { a.setAttribute('tabindex', '-1'); });
       grid.appendChild(clone);
     });
-    document.querySelectorAll('[data-filter-target="#workGrid"] .pill').forEach(function (pill) {
+    if (grid.id) document.querySelectorAll('[data-filter-target="#' + grid.id + '"] .pill').forEach(function (pill) {
       pill.addEventListener('click', function () {
         grid.classList.toggle('is-filtered', pill.getAttribute('data-filter') !== 'all');
       });
+    });
     });
   })();
 
