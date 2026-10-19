@@ -68,6 +68,25 @@
     });
   });
 
+  /* ---------- Case studies marquee: left to right ---------- */
+  (function () {
+    var grid = document.getElementById('workGrid');
+    if (!grid) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    Array.prototype.slice.call(grid.children).forEach(function (card) {
+      var clone = card.cloneNode(true);
+      clone.classList.add('is-clone');
+      clone.setAttribute('aria-hidden', 'true');
+      clone.querySelectorAll('a').forEach(function (a) { a.setAttribute('tabindex', '-1'); });
+      grid.appendChild(clone);
+    });
+    document.querySelectorAll('[data-filter-target="#workGrid"] .pill').forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        grid.classList.toggle('is-filtered', pill.getAttribute('data-filter') !== 'all');
+      });
+    });
+  })();
+
   /* ---------- Work filters ---------- */
   var pillGroups = document.querySelectorAll('[data-filter-group]');
   pillGroups.forEach(function (group) {
