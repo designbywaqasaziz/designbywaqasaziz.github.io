@@ -303,6 +303,8 @@ main { padding-top: var(--header-h); }
 .work-card:hover .thumb img { transform: scale(1.045); }
 .work-card .card-body { padding: 1.4rem 1.5rem 1.6rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
 .work-card h3 { font-size: 1.45rem; margin-bottom: 0.35rem; }
+.work-card .card-sub { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 0.6rem; }
+.work-card .card-desc { font-size: 0.9rem; line-height: 1.55; color: var(--text-mute); margin-top: 0.7rem; }
 .work-card .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .work-card .tag {
   font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
