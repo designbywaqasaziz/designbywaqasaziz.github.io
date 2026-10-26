@@ -623,3 +623,13 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').catch(function () {});
   });
 }
+
+/* Speed: prerender same-site pages on hover intent (Chrome/Edge) for near-instant navigation */
+try {
+  if (!document.querySelector('script[type="speculationrules"]')) {
+    var spec = document.createElement('script');
+    spec.type = 'speculationrules';
+    spec.textContent = JSON.stringify({prerender: [{source: 'document', where: {href_matches: '/*'}, eagerness: 'moderate'}]});
+    document.head.appendChild(spec);
+  }
+} catch (e) {}

@@ -977,3 +977,13 @@ button.thumb img { display: block; }
 .case-track.is-filtered .is-clone{display:none}
 @keyframes caseMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion: reduce){.case-track{animation:none;flex-wrap:wrap;width:auto}.case-track .work-card{flex:1 1 320px;margin-bottom:clamp(1.25rem,2.5vw,2rem)}}
+
+/* Preloader: instant brand overlay, fades on load (never blocks content) */
+#wa-preloader{position:fixed;inset:0;z-index:9999;background:#050806;display:flex;flex-direction:column;gap:16px;align-items:center;justify-content:center;transition:opacity .3s ease}
+#wa-preloader.wa-preloader-done{opacity:0;pointer-events:none}
+.wa-preloader-mark{font-family:Anton,Arial,sans-serif;font-size:56px;letter-spacing:2px;color:#fff;line-height:1}
+.wa-preloader-mark span{color:#14EA2E}
+.wa-preloader-bar{width:120px;height:3px;background:#1d221d;overflow:hidden;border-radius:3px}
+.wa-preloader-bar i{display:block;height:100%;width:40%;background:#14EA2E;animation:wa-load 1s ease-in-out infinite}
+@keyframes wa-load{0%{transform:translateX(-100%)}100%{transform:translateX(300%)}}
+@media (prefers-reduced-motion: reduce){.wa-preloader-bar i{animation:none;width:100%}}
